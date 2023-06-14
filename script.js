@@ -7,6 +7,9 @@ const boardHeight = 300
 const userStart = [230, 10]
 let currentPosition = userStart
 
+const ballStart = [270, 40]
+let ballCurrentPosition = ballStart
+
 // Create block
 class Block {
     constructor(xAxis, yAxis) {
@@ -85,4 +88,6 @@ document.addEventListener('keydown', moveUser)
 // Add ball
 const ball = document.createElement('ball')
 ball.classList.add('ball')
+ball.style.left = ballCurrentPosition[0] + 'px'
+ball.style.bottom = ballCurrentPosition[1] + 'px'
 grid.appendChild(ball)
