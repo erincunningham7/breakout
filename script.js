@@ -5,6 +5,8 @@ const ballDiameter= 20
 const boardWidth = 560
 const boardHeight = 300
 let timerId
+let xDirection = -2
+let yDirection = 2
 
 const userStart = [230, 10]
 let currentPosition = userStart
@@ -15,7 +17,7 @@ let ballCurrentPosition = ballStart
 // Create block
 class Block {
     constructor(xAxis, yAxis) {
-        this.bottomLeft = [xAxis,yAxis]
+        this.bottomLeft = [xAxis, yAxis]
         this.bottomRight = [xAxis + blockWidth, yAxis]
         this.topLeft = [xAxis, yAxis + blockHeight]
         this.topRight = [xAxis + blockWidth, yAxis + blockHeight]
@@ -96,14 +98,15 @@ document.addEventListener('keydown', moveUser)
 // Add ball
 const ball = document.createElement('ball')
 ball.classList.add('ball')
-drawBall()
 grid.appendChild(ball)
+drawBall()
 
 // Move the ball
 function moveBall() {
-    ballCurrentPosition[0] += 2
-    ballCurrentPosition[1] += 2
+    ballCurrentPosition[0] += xDirection
+    ballCurrentPosition[1] += yDirection
     drawBall()
+    checkForCollisions()
 }
 
 timerId = setInterval(moveBall, 30)
@@ -111,7 +114,26 @@ timerId = setInterval(moveBall, 30)
 // Check for collisions
 function checkForCollisions() {
     // Check for wall collisions
-    if (ballCurrentPosition[0] >= (boardWidth - ballDiameter)) {
+    if (ballCurrentPosition[0] >= (boardWidth - ballDiameter) || ballCurrentPosition[1] >= (boardHeight - ballDiameter)){
         changeDirection()
+    }
+}
+
+function changeDirection() {
+    if (xDirection === 2 && yDirection === 2) {
+        yDirection = -2
+        return
+    }
+    if (xDirection === 2 && yDirection === -2) {
+        xDirection = 2
+        return
+    }
+    if (xDirection === -2 && yDirection === -2) {
+        yDirection = 2
+        return
+    }
+    if (xDirection === -2 && yDirection === 2) {
+        xDirection = 2
+        return
     }
 }
