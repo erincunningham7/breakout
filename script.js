@@ -104,3 +104,4 @@ function moveBall() {
     drawBall()
 }
 
+setInterval(moveBall, 30)
