@@ -63,8 +63,11 @@ function drawUser() {
 // Move user
 function moveUser(e) {
     switch(e.key) {
-        case: 'ArrowLeft':
+        case 'ArrowLeft':
             currentPosition[0] -= 10
             drawUser()
+            break;
     }
 }
+
+document.addEventListener('keydown', moveUser)
