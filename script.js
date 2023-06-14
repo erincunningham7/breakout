@@ -96,3 +96,11 @@ const ball = document.createElement('ball')
 ball.classList.add('ball')
 drawBall()
 grid.appendChild(ball)
+
+// Move the ball
+function moveBall() {
+    ballCurrentPosition[0] += 2
+    ballCurrentPosition[1] += 2
+    drawBall()
+}
+
