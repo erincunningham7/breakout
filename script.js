@@ -1,8 +1,10 @@
 const grid = document.querySelector('.grid')
 const blockWidth = 100
 const blockHeight = 20
+const ballDiameter= 20
 const boardWidth = 560
 const boardHeight = 300
+let timerId
 
 const userStart = [230, 10]
 let currentPosition = userStart
@@ -104,4 +106,12 @@ function moveBall() {
     drawBall()
 }
 
-setInterval(moveBall, 30)
+timerId = setInterval(moveBall, 30)
+
+// Check for collisions
+function checkForCollisions() {
+    // Check for wall collisions
+    if (ballCurrentPosition[0] >= (boardWidth - ballDiameter)) {
+        changeDirection()
+    }
+}
