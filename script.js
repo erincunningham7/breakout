@@ -159,7 +159,7 @@ for (let i = 0; i < blocks.length; i++) {
         document.removeEventListener('keydown', moveUser)
     }
 }
-
+// Comment
 function changeDirection() {
     if (xDirection === 2 && yDirection === 2) {
         yDirection = -2
